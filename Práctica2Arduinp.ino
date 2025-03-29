@@ -1,19 +1,19 @@
-#include <SPI.h>
-#include <MFRC522.h>
-
+#include <SPI.h>   // Se llama la librería para la comunicación SPI
+#include <MFRC522.h>   //Se llama la librería para controlar el módulo lector de tarjetas RFID MFRC522
+// A continuación se definen los pines que ocupamos en el arduino para los sensores
 #define RST_PIN 9
 #define SS_PIN 10
 #define PIR_PIN 2
 #define TRIG_PIN 5
 #define ECHO_PIN 6
 #define LDR_PIN A0
-
+// Creación del objeto mfrc522 para controlaar el lector RFID
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 
 void setup() {
-  Serial.begin(9600);
-  SPI.begin();
-  mfrc522.PCD_Init();
+  Serial.begin(9600);  // Se inicia la comunicación serial
+  SPI.begin();   // Inicia comunicación SPI
+  mfrc522.PCD_Init();   // Inicialización del lector RFID
   pinMode(PIR_PIN, INPUT);
   pinMode(TRIG_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
@@ -49,12 +49,12 @@ void loop() {
     mfrc522.PICC_HaltA();
   }
   
-  // Enviar datos
+  // Enviar datos por serial
   Serial.print("RFID:" + tarjeta + 
                ",PIR:" + String(movimiento) + 
                ",US:" + String(distancia) + 
                ",LDR:" + String(luz));
   Serial.println();
   
-  delay(300);
+  delay(300); // Se le agrega un retardo de 300ms antes de repertir el loop, para no saturar el serial.
 }
