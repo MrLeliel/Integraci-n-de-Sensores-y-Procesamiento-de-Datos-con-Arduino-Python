@@ -5,3 +5,4 @@ Práctica 2
 #Integrantes: 
 
 Hernández Pérez Luis Gerardo
+Sánchez Hernández Christian
