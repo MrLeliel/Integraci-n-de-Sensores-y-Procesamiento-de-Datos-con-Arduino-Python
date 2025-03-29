@@ -6,3 +6,4 @@ Práctica 2
 
 Hernández Pérez Luis Gerardo
 Sánchez Hernández Christian
+Brígido Mora Saín David
